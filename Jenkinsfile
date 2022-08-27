@@ -72,7 +72,7 @@ pipeline {
                     script {
                         sh 'docker login -u ${DOCKER_CREDS_USR} -p ${DOCKER_CREDS_PSW}'
                         sh 'docker rm galaxyExamen -f'
-                        sh 'docker run -d -p 8500:8080 --name galaxyExamen ${DOCKER_CREDS_USR}/msmicroservice:$BUILD_NUMBER'
+                        sh 'docker run -d -p 8080:8080 --name galaxyExamen ${DOCKER_CREDS_USR}/msmicroservice:$BUILD_NUMBER'
                         //sh 'docker run -d -p 8600:8080 ${DOCKER_CREDS_USR}/msmicroservice:$BUILD_NUMBER'
                         sh 'docker logout'
                     }
@@ -82,7 +82,7 @@ pipeline {
                 steps {
                     script {
                         sh 'docker ps'
-                        sh 'curl http://192.168.1.2:8500/customers'
+                        sh 'curl http://192.168.1.2:8080/customers'
                     }
                 }
             }
