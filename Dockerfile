@@ -13,7 +13,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 	dpkg-reconfigure -fnoninteractive tzdata
 
 ADD target/labmaven-*.jar app.jar
-ADD src/main/docker/entrypoint.sh entrypoint.sh
+ADD entrypoint.sh entrypoint.sh
 RUN chmod +x entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
